@@ -4,6 +4,13 @@
 
 ---
 
+## 📖 详细文档
+
+- **[CLI 使用说明](docs/wrong-answer-book/README.md)** — 命令行版错题管理工具（`wrong_answer_book.py`），上传试卷、查看错题、标记掌握、删除记录。
+- **[Web 版使用说明](docs/wrong-answer-book/README_WEB.md)** — 基于 Flask 的 Web 界面（`web_app.py`），通过浏览器直观操作错题库。
+
+---
+
 ## 安装
 
 将 Skill 复制到 CodeBuddy 的 skills 目录（已安装可跳过）：
