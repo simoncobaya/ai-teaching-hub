@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-web_app.py — 智能错题库 Web 界面
+web_app.py — 魔法错题本 Web 界面
 
 Flask 单页应用，为小朋友提供直观的错题管理界面。
 所有业务逻辑复用 WrongAnswerBook 类，无需重写。
@@ -750,7 +750,7 @@ def create_app(work_dir: str = ".") -> Flask:
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description="智能错题库 Web 界面")
+    parser = argparse.ArgumentParser(description="魔法错题本 Web 界面")
     parser.add_argument("--port", type=int, default=5000, help="服务端口（默认 5000）")
     parser.add_argument("--host", default="127.0.0.1", help="绑定地址（默认 127.0.0.1）")
     parser.add_argument("--work-dir", default=".", help="工作目录（默认当前目录）")
@@ -760,7 +760,7 @@ def main():
     app = create_app(work_dir=args.work_dir)
 
     print("")
-    print("  📚  智能错题库 Web 版")
+    print("  📚  魔法错题本 Web 版")
     print(f"  🌐  地址: http://{args.host}:{args.port}")
     print(f"  📂  工作目录: {Path(args.work_dir).resolve()}")
     print("")

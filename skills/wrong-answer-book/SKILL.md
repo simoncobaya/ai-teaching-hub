@@ -1,7 +1,7 @@
 ---
 name: wrong-answer-book
 description: |
-  智能错题库 — 试卷图片自动识别与错题管理工具。
+  魔法错题本 — 试卷图片自动识别与错题管理工具。
   上传试卷照片后，自动完成去重校验、调用腾讯云 SubmitQuestionMarkAgentJob API 识别批改、
   提取错题信息、按可读格式生成错题库 Markdown 文件，并维护统计索引支持按科目/年级等维度查询。
   支持按试卷级或单题级删除错题记录。
@@ -9,7 +9,7 @@ description: |
   "错题本"等意图时触发。
 ---
 
-# 智能错题库 Skill
+# 魔法错题本 Skill
 
 ## 触发方式
 

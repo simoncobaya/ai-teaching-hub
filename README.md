@@ -1,4 +1,4 @@
-# 智能错题库 Skill
+# 魔法错题本 Skill
 
 > 拍照上传试卷 → 自动识别批改 → 生成错题库 → 随时查漏补缺
 
@@ -8,6 +8,7 @@
 
 - **[CLI 使用说明](docs/wrong-answer-book/README.md)** — 命令行版错题管理工具（`wrong_answer_book.py`），上传试卷、查看错题、标记掌握、删除记录。
 - **[Web 版使用说明](docs/wrong-answer-book/README_WEB.md)** — 基于 Flask 的 Web 界面（`web_app.py`），通过浏览器直观操作错题库。
+- **[🧒 小朋友搭建指南](docs/小朋友搭建指南_魔法错题本.md)** — 给小朋友的引导式对话提示词，复制粘贴就能让 AI 帮你搭出同样的工具。
 
 ---
 
@@ -16,10 +17,27 @@
 将 Skill 复制到 CodeBuddy 的 skills 目录（已安装可跳过）：
 
 ```bash
-cp -r skills/wrong-answer-book ~/.codebuddy/skills/
+# Linux / macOS
+cp -r skills/wrong-answer-book .codebuddy/skills/
+```
+
+```powershell
+# Windows PowerShell
+Copy-Item -Recurse -Path "skills/wrong-answer-book" -Destination ".codebuddy\skills\"
+```
+
+```cmd
+REM Windows CMD
+xcopy /E /I "skills\wrong-answer-book" ".codebuddy\skills\wrong-answer-book"
 ```
 
 在 CodeBuddy 对话框中确认 Skill 已加载。
+
+> 💡 **懒得自己敲命令？** 把下面这句话复制到 CodeBuddy 对话框，让 AI 帮你搞定：
+
+```
+帮我安装当前项目的 wrong-answer-book skill：把 skills/wrong-answer-book 复制到项目的 .codebuddy/skills/ 目录，然后用模板创建 credentials.md 并引导我填写腾讯云 API 密钥。
+```
 
 ---
 
@@ -35,12 +53,24 @@ cp -r skills/wrong-answer-book ~/.codebuddy/skills/
 
 ### 2. 填写配置
 
-```bash
-# 从模板复制一份
-cp skills/wrong-answer-book/assets/.credentials.md credentials.md
+从模板复制一份：
 
-# 编辑 credentials.md，替换占位符为真实密钥
+```bash
+# Linux / macOS
+cp skills/wrong-answer-book/assets/.credentials.md credentials.md
 ```
+
+```powershell
+# Windows PowerShell
+Copy-Item -Path "skills/wrong-answer-book/assets/.credentials.md" -Destination "credentials.md"
+```
+
+```cmd
+REM Windows CMD
+copy "skills\wrong-answer-book\assets\.credentials.md" "credentials.md"
+```
+
+编辑 `credentials.md`，替换占位符为真实密钥。
 
 `credentials.md` 内容示例：
 
@@ -160,6 +190,67 @@ Skill：
       ├─ 2.1 ✅ 反义疑问句 — 回答 [已掌握]
       ├─ 2.2 反义疑问句 — 回答
       └─ ...
+```
+
+### 标记已掌握
+
+掌握某道错题后，标个 ✅ 追踪进度：
+
+```
+用户：掌握了 1.1
+
+Skill：
+  ✅ 已标记 [1] 中错题 1.1「汉字拼音拼写 — zǎo chén」为已掌握
+  📊 [1] 进度：1/2 已掌握
+```
+
+如果发现还没真正掌握，也可以取消：
+
+```
+用户：1.1 还没掌握
+
+Skill：
+  ✅ 已取消 [1] 中 1.1 的已掌握标记
+  📊 [1] 进度：0/2 已掌握
+```
+
+全部错题都掌握时会有彩蛋 🎉：
+
+```
+用户：1.2 已掌握
+
+Skill：
+  ✅ 已标记 [1] 中错题 1.2「音序查字法 — 先查大写字母」为已掌握
+  📊 [1] 全部错题已掌握！🎉
+```
+
+### 删除错题
+
+不需要某道错题时，可以按题号删除：
+
+```
+用户：删除 1.2
+
+Skill：
+  ✅ 已删除 [1] 中的错题 1.2「音序查字法 — 先查大写字母」
+  📊 [1] 剩余 1 道错题
+```
+
+### 删除试卷
+
+整份试卷都不需要了？连图片带记录一起清掉：
+
+```
+用户：删除 [1]
+
+Skill：
+  ⚠️ 确认删除「三年级语文 期中测试题」整份试卷记录？
+     （将同时删除错题库文件、试卷图片和索引记录）
+
+  用户：确认
+
+  ✅ 已删除整份试卷「三年级语文 期中测试题」
+  📈 累计：剩余 1 份卷子，9 道错题
 ```
 
 ---

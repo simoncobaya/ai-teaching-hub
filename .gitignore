@@ -1,5 +1,10 @@
 .codebuddy
+node_modules
+package.json
+package-lock.json
 __pycache__
 credentials.md
 /wrong-answer-book/
 /app/wrong-answer-book/wrong-answer-book/
+AICAMP魔法错题本教学0530.pptx
+README.pdf

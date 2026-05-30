@@ -1,4 +1,4 @@
-# 智能错题库 — Web 版使用说明
+# 魔法错题本 — Web 版使用说明
 
 `web_app.py` 是基于 Flask 的 Web 界面，让小朋友通过浏览器直观操作错题库，所有业务逻辑复用 `wrong_answer_book.py`。
 

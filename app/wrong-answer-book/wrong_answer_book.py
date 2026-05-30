@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-wrong_answer_book.py — 智能错题库 CLI 工具
+wrong_answer_book.py — 魔法错题本 CLI 工具
 
 将试卷图片自动识别为错题记录，支持查询、统计、掌握标记和删除。
 脱离 CodeBuddy 环境，任何 Python 3.8+ 均可运行。
@@ -327,7 +327,7 @@ class MarkdownBuilder:
         lines.append("")
 
         # ── 7. 文档尾部 ──
-        lines.append("*本文件由「智能错题库」自动生成*")
+        lines.append("*本文件由「魔法错题本」自动生成*")
         lines.append("")
 
         return "\n".join(lines)
@@ -587,7 +587,7 @@ class MarkdownUpdater:
 # ═══════════════════════════════════════════════════════════════════════
 
 class WrongAnswerBook:
-    """智能错题库核心业务逻辑。"""
+    """魔法错题本核心业务逻辑。"""
 
     def __init__(self, work_dir: str = "."):
         self.work_dir = Path(work_dir).resolve()
@@ -1136,7 +1136,7 @@ def build_parser() -> argparse.ArgumentParser:
     """构建 CLI 参数解析器。"""
     parser = argparse.ArgumentParser(
         prog="wrong_answer_book.py",
-        description="智能错题库 — 试卷图片分析、错题管理与统计",
+        description="魔法错题本 — 试卷图片分析、错题管理与统计",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例:
