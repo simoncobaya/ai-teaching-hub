@@ -9,11 +9,29 @@
 
 ## 安装
 
+> 以下命令均在 `app/wrong-answer-book/` 目录下执行。
+
 ```bash
+# Linux / macOS
+cd app/wrong-answer-book
+pip install -r requirements.txt
+```
+
+```powershell
+# Windows PowerShell
+cd app\wrong-answer-book
+pip install -r requirements.txt
+```
+
+```cmd
+REM Windows CMD
+cd app\wrong-answer-book
 pip install -r requirements.txt
 ```
 
 ## 快速开始
+
+> 💡 Windows 用户：命令中路径分隔符请用 `\`，如 `python wrong_answer_book.py analyze .\试卷.jpg`。
 
 ```bash
 # 1. 初始化工作目录
