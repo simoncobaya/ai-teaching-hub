@@ -127,14 +127,16 @@ curl -O "https://cdn.bigmodel.cn/install/claude_code_env.sh" && bash ./claude_co
 **切换到 DeepSeek：**
 ```json
 {
-  "providers": [
-    {
-      "name": "deepseek",
-      "baseURL": "https://api.deepseek.com",
-      "apiKey": "你的DeepSeek-API-Key",
-      "models": [{"id": "deepseek-chat", "name": "deepseek"}]
-    }
-  ]
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "sk-你的DeepSeek-API-Key",
+    "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
+    "ANTHROPIC_MODEL": "deepseek-v4-pro[1m]",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro[1m]",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "deepseek-v4-pro",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-pro[1m]",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME": "deepseek-v4-pro",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-flash"
+  }
 }
 ```
 

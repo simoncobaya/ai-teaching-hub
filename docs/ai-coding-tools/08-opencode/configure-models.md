@@ -26,7 +26,7 @@ export OPENAI_BASE_URL="https://api.deepseek.com/v1"
 ```json
 {
   "provider": "openai",
-  "model": "deepseek-chat",
+  "model": "deepseek-v4-flash",
   "apiKey": "你的DeepSeek-API-Key",
   "baseURL": "https://api.deepseek.com/v1"
 }

@@ -23,7 +23,7 @@
 ### Step 2：添加 OpenAI 兼容模型
 
 1. 点击 **「Add Model」**
-2. 在模型名称中输入：`deepseek-chat`
+2. 在模型名称中输入：`deepseek-v4-flash`
 3. 找到 **「OpenAI API Key」** 设置区域
 
 ---
@@ -47,7 +47,7 @@
 
 1. 在 Chat 或 Composer 界面
 2. 点击模型选择下拉框
-3. 选择 **deepseek-chat**
+3. 选择 **deepseek-v4-flash**
 
 现在 Cursor 使用的是 DeepSeek 模型了！🎉
 
@@ -69,8 +69,8 @@
 
 在 Cursor 中随时可以切换模型：
 
-- 选择 **deepseek-chat** → 使用 DeepSeek（便宜）
-- 选择 **claude-3.5-sonnet** → 使用 Cursor 内置 Claude（Pro 用户）
+- 选择 **deepseek-v4-flash** → 使用 DeepSeek（便宜）
+- 选择 **claude-sonnet-4-6** → 使用 Cursor 内置 Claude（Pro 用户）
 - 选择 **gpt-4o** → 使用 Cursor 内置 GPT-4（Pro 用户）
 
 > 💡 **建议**：日常用 DeepSeek 省钱，复杂任务切换到更强的模型。
