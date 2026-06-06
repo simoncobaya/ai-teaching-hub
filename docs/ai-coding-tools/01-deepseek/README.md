@@ -22,11 +22,15 @@ DeepSeek 是一家中国 AI 公司（深度求索）开发的 AI 大模型。你
 | AI 模型 | 输入价格（每百万字） | 输出价格（每百万字） |
 |---------|-------------------|-------------------|
 | **DeepSeek V4 Flash** 🐋 | **$0.14**（约 ¥1） | **$0.28**（约 ¥2） |
-| **DeepSeek V4 Pro** | $1.74（约 ¥12） | $3.48（约 ¥25） |
-| Claude Sonnet | $3.00（约 ¥22） | $15.00（约 ¥108） |
-| GPT-4o | $2.50（约 ¥18） | $10.00（约 ¥72） |
+| **DeepSeek V4 Pro** | **$0.42**（约 ¥3） | **$0.83**（约 ¥6） |
+| Claude Sonnet 4.6 | $3.00（约 ¥22） | $15.00（约 ¥108） |
+| Claude Opus 4.8 | $5.00（约 ¥36） | $25.00（约 ¥180） |
+| GPT-5.4 | $2.50（约 ¥18） | $15.00（约 ¥108） |
+| GPT-5.5 | $5.00（约 ¥36） | $30.00（约 ¥216） |
 
-> 🎯 DeepSeek V4 Flash 比 Claude 便宜 **20-50 倍**！对学生来说非常友好。
+> 🎯 DeepSeek V4 Flash 比 Claude Sonnet 便宜 **20-50 倍**！对学生来说非常友好。
+
+> 💡 价格来源（2026 年 6 月）：[DeepSeek 官方](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)、[Claude 官方](https://platform.claude.com/docs/en/about-claude/pricing)、[OpenAI 官方](https://openai.com/api/pricing/)。价格可能随时间变动，请以官网为准。
 
 ### 2. 🧠 编程能力很强
 
