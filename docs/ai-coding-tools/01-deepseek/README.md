@@ -49,10 +49,13 @@ DeepSeek 是中国团队开发的，**中文理解能力非常好**：
 
 ### 4. 🔌 容易接入
 
-DeepSeek 使用 **OpenAI 兼容格式** 的 API，这意味着：
-- 很多 AI 编程工具都可以直接用它
-- 配置非常简单
+DeepSeek 同时支持 **OpenAI 兼容格式** 和 **Anthropic 兼容格式**（Claude 的 API 格式），这意味着：
+- 很多 AI 编程工具都可以直接用
+- **Claude Code 可以直接对接**，配置非常简单
+- Cursor、OpenCode 等工具也都能用
 - 切换模型很方便
+
+> 💡 如果你用 Claude Code，DeepSeek 提供了专用的 Anthropic 格式接口（`/anthropic`），完美兼容！
 
 ---
 
