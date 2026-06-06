@@ -69,7 +69,7 @@ DeepSeek 提供了几个不同的模型：
 | 名称 | 链接 |
 |------|------|
 | DeepSeek 官网 | https://platform.deepseek.com/ |
-| DeepSeek API 文档 | https://api-docs.deepseek.com/ |
+| DeepSeek API 文档 | https://api-docs.deepseek.com/zh-cn/ |
 | DeepSeek 聊天界面 | https://chat.deepseek.com/ |
 
 ---

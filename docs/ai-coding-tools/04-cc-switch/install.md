@@ -21,7 +21,7 @@
 #### 方式一：安装包（推荐）
 
 1. 下载安装包（任选一种）：
-   - 📦 **本地下载**（推荐，速度快）：[CC-Switch-v3.16.1-Windows.msi](./dist/CC-Switch-v3.16.1-Windows.msi)
+   - 📦 **指定版本下载**：[CC-Switch-v3.16.1-Windows.msi](https://github.com/farion1231/cc-switch/releases/download/v3.16.1/CC-Switch-v3.16.1-Windows.msi)
    - 🌐 **GitHub 下载**：在 https://github.com/farion1231/cc-switch/releases 找到并下载 **`CC-Switch-vX.X.X-Windows.msi`**
 2. 双击下载的 `.msi` 文件
 3. 按照安装向导操作，一路"下一步"
@@ -30,7 +30,7 @@
 #### 方式二：便携版（免安装）
 
 1. 下载便携版（任选一种）：
-   - 📦 **本地下载**（推荐，速度快）：[CC-Switch-v3.16.1-Windows-Portable.zip](./dist/CC-Switch-v3.16.1-Windows-Portable.zip)
+   - 📦 **指定版本下载**：[CC-Switch-v3.16.1-Windows-Portable.zip](https://github.com/farion1231/cc-switch/releases/download/v3.16.1/CC-Switch-v3.16.1-Windows-Portable.zip)
    - 🌐 **GitHub 下载**：在 https://github.com/farion1231/cc-switch/releases 找到并下载 **`CC-Switch-vX.X.X-Windows-Portable.zip`**
 2. 解压到任意文件夹
 3. 双击 `CC-Switch.exe` 运行
@@ -62,7 +62,7 @@ brew upgrade --cask cc-switch
 #### 方式二：手动下载
 
 1. 下载安装包（任选一种）：
-   - 📦 **本地下载**（推荐，速度快）：[CC-Switch-v3.16.1-macOS.dmg](./dist/CC-Switch-v3.16.1-macOS.dmg)
+   - 📦 **指定版本下载**：[CC-Switch-v3.16.1-macOS.dmg](https://github.com/farion1231/cc-switch/releases/download/v3.16.1/CC-Switch-v3.16.1-macOS.dmg)
    - 🌐 **GitHub 下载**：在 https://github.com/farion1231/cc-switch/releases 找到并下载 **`CC-Switch-vX.X.X-macOS.dmg`**
 2. 双击 `.dmg` 文件
 3. 把 CC Switch 拖到"Applications"文件夹
@@ -76,10 +76,10 @@ brew upgrade --cask cc-switch
 
 1. 下载对应你的发行版的安装包（任选一种）：
 
-   **本地下载**（推荐，速度快）：
-   - **Ubuntu/Debian**：[CC-Switch-v3.16.1-Linux-x86_64.deb](./dist/CC-Switch-v3.16.1-Linux-x86_64.deb)
-   - **Fedora/RHEL**：[CC-Switch-v3.16.1-Linux-x86_64.rpm](./dist/CC-Switch-v3.16.1-Linux-x86_64.rpm)
-   - **通用**（免安装）：[CC-Switch-v3.16.1-Linux-x86_64.AppImage](./dist/CC-Switch-v3.16.1-Linux-x86_64.AppImage)
+   **指定版本下载**：
+   - **Ubuntu/Debian**：[CC-Switch-v3.16.1-Linux-x86_64.deb](https://github.com/farion1231/cc-switch/releases/download/v3.16.1/CC-Switch-v3.16.1-Linux-x86_64.deb)
+   - **Fedora/RHEL**：[CC-Switch-v3.16.1-Linux-x86_64.rpm](https://github.com/farion1231/cc-switch/releases/download/v3.16.1/CC-Switch-v3.16.1-Linux-x86_64.rpm)
+   - **通用**（免安装）：[CC-Switch-v3.16.1-Linux-x86_64.AppImage](https://github.com/farion1231/cc-switch/releases/download/v3.16.1/CC-Switch-v3.16.1-Linux-x86_64.AppImage)
 
    **GitHub 下载**：在 https://github.com/farion1231/cc-switch/releases 找到并下载对应文件（`.deb` / `.rpm` / `.AppImage`）
 2. 安装：
@@ -132,10 +132,12 @@ CC Switch 启动后，检查：
 ### Q：下载速度很慢？
 
 GitHub 在国内可能下载慢。可以试试：
-- 📦 使用上面的 **本地下载** 链接，直接从教程文件中获取
+- 📦 使用上面的 **指定版本下载** 链接（直接下载，不用在 Releases 页面里找文件）
 - 使用 GitHub 镜像站
 - 让老师或同学帮忙下载
 - 使用网络加速工具
+
+> ⚠️ 以上"指定版本下载"链接指向 CC Switch v3.16.1，这是一个固定版本，可能会随着时间过期失效。如果无法下载，请使用 GitHub Releases 页面获取最新版本。
 
 ---
 
