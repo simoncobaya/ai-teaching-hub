@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>📚 AI 编程工具全家桶教程</title>
+  <meta name="description" content="帮助 4-6 年级学生学会用 AI 工具编程的教育教程">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+
+  <!-- Theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
+
+  <style>
+    :root {
+      --theme-color: #42b983;
+      --sidebar-name-margin: 0;
+      --sidebar-name-padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">加载中...</div>
+  <script>
+    // 路径解析辅助函数：基于文件目录解析相对路径
+    // dir: "ai-coding-tools/00-introduction", relPath: "../01-deepseek/README.md"
+    // → "ai-coding-tools/01-deepseek/README.md"
+    function resolvePath(baseDir, relPath) {
+      if (relPath.startsWith('http://') || relPath.startsWith('https://') ||
+          relPath.startsWith('data:') || relPath.startsWith('/') ||
+          relPath.startsWith('#') || relPath.startsWith('mailto:')) {
+        return null; // 不需要修改
+      }
+
+      var parts = baseDir.split('/');
+      var segments = relPath.split('/');
+
+      if (segments[0] === '.') {
+        segments.shift();
+      }
+
+      while (segments.length > 0 && segments[0] === '..') {
+        segments.shift();
+        if (parts.length > 0) parts.pop();
+      }
+
+      if (parts.length > 0) {
+        return parts.join('/') + '/' + segments.join('/');
+      } else {
+        return segments.join('/');
+      }
+    }
+
+    // 从 vm.route.path 提取文件所在目录
+    // "/ai-coding-tools/00-introduction/README" → "ai-coding-tools/00-introduction"
+    function getDir(path) {
+      if (!path) return null;
+      var lastSlash = path.lastIndexOf('/');
+      if (lastSlash <= 0) return null;
+      return path.substring(1, lastSlash);
+    }
+
+    window.$docsify = {
+      name: '📚 AI 编程工具全家桶',
+      nameLink: '#/ai-coding-tools/README',
+      loadSidebar: '_sidebar.md',
+      subMaxLevel: 3,
+      auto2top: true,
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: '🔍 搜索',
+        noData: '😢 没有找到结果',
+        depth: 6
+      },
+      pagination: {
+        previousText: '⬅ 上一节',
+        nextText: '下一节 ➡',
+        crossChapter: true,
+        crossChapterText: true,
+      },
+      copyCode: {
+        buttonText: '📋 复制',
+        errorText: '❌ 失败',
+        successText: '✅ 已复制'
+      },
+      homepage: 'ai-coding-tools/README.md',
+      alias: {
+        '/.*/_sidebar.md': '_sidebar.md',
+      },
+      plugins: [
+        function fixRelativePaths(hook, vm) {
+
+          // ====== 第一步：beforeEach ======
+          // 在 Docsify 解析 Markdown 之前，修正所有 Markdown 语法的相对路径
+          // 包括：[链接](path)、![图片](path)
+          hook.beforeEach(function (markdown) {
+            var dir = getDir(vm.route.path);
+            if (!dir) return markdown;
+
+            // 只处理 Markdown 链接 [text](url)，不处理图片 ![alt](url)
+            // Docsify 本身能正确处理 ![](./images/xxx.png) 图片路径
+            // 只有页面间链接 [text](../path) 需要修正
+            markdown = markdown.replace(/(!?\[[^\]]*\]\()([^)]+)(\))/g, function (match, prefix, url, suffix) {
+              // 跳过图片（! 开头）——Docsify 自己能处理
+              if (prefix.startsWith('!')) return match;
+              // 跳过锚点（如 #xxx）
+              if (url.startsWith('#') && !url.startsWith('#/')) return match;
+              // 跳过外部链接
+              if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('mailto:')) return match;
+
+              var resolved = resolvePath(dir, url);
+              if (resolved === null) return match;
+
+              return prefix + resolved + suffix;
+            });
+
+            return markdown;
+          });
+
+          // ====== 第二步：afterEach ======
+          // Docsify 把 Markdown 转成 HTML 后，修正 HTML 标签里的路径
+          // 包括：<img src="...">、<a href="...">
+          hook.afterEach(function (html) {
+            var dir = getDir(vm.route.path);
+            if (!dir) return html;
+
+            // 修复 <img src="...">
+            // 只处理 ./ 或 ../ 开头的路径，跳过已被 beforeEach 处理过的
+            html = html.replace(/(<img\s[^>]*src=["'])([^"']*)(["'][^>]*>)/gi,
+              function (match, before, src, after) {
+                if (!src.startsWith('./') && !src.startsWith('../')) return match;
+                var resolved = resolvePath(dir, src);
+                if (resolved === null) return match;
+                return before + resolved + after;
+              }
+            );
+
+            // 修复 <a href="..."> 但跳过 hash 路由、外部链接
+            // 同样只处理 ./ 或 ../ 开头的路径
+            html = html.replace(/(<a\s[^>]*href=["'])([^"']*)(["'][^>]*>)/gi,
+              function (match, before, href, after) {
+                if (href.startsWith('#') || href.startsWith('http://') ||
+                    href.startsWith('https://') || href.startsWith('mailto:')) {
+                  return match;
+                }
+                if (!href.startsWith('./') && !href.startsWith('../')) return match;
+                var resolved = resolvePath(dir, href);
+                if (resolved === null) return match;
+                return before + resolved + after;
+              }
+            );
+
+            return html;
+          });
+        }
+      ]
+    }
+  </script>
+
+  <!-- Docsify 核心 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+
+  <!-- 搜索插件 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+
+  <!-- 代码复制插件 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/copy-code.min.js"></script>
+
+  <!-- 分页导航插件 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
+
+  <!-- Emoji 插件 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/emoji.min.js"></script>
+
+  <!-- 外部链接插件 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/external-script.min.js"></script>
+</body>
+</html>
