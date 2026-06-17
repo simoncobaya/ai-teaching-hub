@@ -130,9 +130,13 @@ Boris Cherny 公开说过：**Claude Code 自身的代码，100% 是由 Claude C
 
 **Step 1：打开终端**
 
-按 `Win + R`，输入 `cmd`，按回车。或者右键开始菜单，选择「终端」或「PowerShell」。
+**Windows 10 / 11 推荐方式**：右键点击 **「开始」** 按钮（或按 `Win + X`），在弹出的菜单中选择 **「终端」** 或 **「PowerShell」**。
 
-> ⚠️ 如果使用 PowerShell 时提示 **"禁止运行脚本"**，请看下方的问题排查章节解决，很简单的！
+![Windows 右键开始菜单打开终端](../ai-coding-tools/images/windows-start-menu-terminal.png)
+
+> 💡 如果右键菜单里有 **「终端（管理员）」**，也可以选这个。管理员权限可以避免一些安装问题。
+
+> ⚠️ 如果打开后提示 **"禁止运行脚本"**，请看下方的问题排查章节，改一个设置就好了！
 
 **Step 2：安装 Claude Code**
 
@@ -273,6 +277,8 @@ Please log in to continue...
 无法加载文件 xxx.ps1，因为在此系统上禁止运行脚本。
 ```
 
+![PowerShell 禁止运行脚本错误](../ai-coding-tools/images/powershell-execution-policy-error.png)
+
 **原因**：Windows PowerShell 为了安全，默认不允许运行来自网络的脚本。
 
 **解决方法**：
@@ -280,19 +286,16 @@ Please log in to continue...
 1. 右键开始菜单 → 选择 **「Windows PowerShell（管理员）」** 或 **「终端（管理员）」**
 2. 输入以下命令，然后按回车：
    ```powershell
-   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
    ```
-3. 输入 `Y` 确认
-4. 关闭管理员窗口，重新打开普通 PowerShell 或终端
-5. 再次运行安装命令：
+3. 关闭管理员窗口，重新打开普通 PowerShell 或终端
+4. 再次运行安装命令：
 
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
 > 💡 执行策略只需要改一次，以后都不会再出现这个错误了！
-
-![Windows PowerShell 执行策略错误截图]（待补充）
 
 </details>
 
@@ -310,9 +313,15 @@ npm install -g @anthropic-ai/claude-code
 <details>
 <summary>❓ 提示 "EACCES: permission denied"</summary>
 
-**错误信息**：
+**错误信息**（你的终端会显示类似这样的内容）：
 ```
-EACCES: permission denied, access '/usr/local/lib/node_modules'
+npm ERR! code EACCES
+npm ERR! syscall access
+npm ERR! path /usr/local/lib/node_modules
+npm ERR! errno -13
+npm ERR! Error: EACCES: permission denied, access '/usr/local/lib/node_modules'
+npm ERR! The operation was rejected by your operating system.
+npm ERR! It is likely you do not have the permissions to access this file as the current user
 ```
 
 **原因**：macOS 系统保护 `/usr/local` 目录，普通用户不能直接写入。
@@ -345,8 +354,6 @@ npm install -g @anthropic-ai/claude-code
 ```
 
 > 💡 方法二操作稍多，但以后装其他包也不需要 sudo。建议有时间的时候做。
-
-![macOS EACCES 权限错误截图]（待补充）
 
 </details>
 
