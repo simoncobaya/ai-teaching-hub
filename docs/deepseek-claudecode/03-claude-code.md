@@ -128,9 +128,16 @@ Boris Cherny 公开说过：**Claude Code 自身的代码，100% 是由 Claude C
 
 #### Windows 系统
 
-**Step 1：打开终端**
+**Step 1：打开终端（重要！）**
 
-按 `Win + R`，输入 `cmd`，按回车。或者搜索"PowerShell"打开。
+> ⚠️ **先用 CMD（命令提示符），不要用 PowerShell！**
+>
+> PowerShell 可能会报 "禁止运行脚本" 的错误，需要额外配置。
+> 用 CMD 最简单，不会遇到权限问题。
+
+按 `Win + R`，输入 `cmd`，按回车。
+
+![Windows 运行 CMD 截图]
 
 **Step 2：安装 Claude Code**
 
@@ -139,6 +146,8 @@ npm install -g @anthropic-ai/claude-code
 ```
 
 > 💡 `npm` 是 Node.js 的包管理器，就像应用商店一样。这个命令是从"应用商店"下载安装 Claude Code。
+>
+> ⚠️ 如果你不小心用了 PowerShell 并且看到 **"禁止运行脚本"** 的错误，不用慌！关掉 PowerShell，用 CMD 重新安装就行。如果坚持要用 PowerShell，请看下方的问题排查章节。
 
 **Step 3：验证安装**
 
@@ -162,6 +171,14 @@ claude --version
 npm install -g @anthropic-ai/claude-code
 ```
 
+> ⚠️ 如果看到 `EACCES: permission denied` 错误，说明权限不够。在命令前面加 `sudo` 即可：
+>
+> ```bash
+> sudo npm install -g @anthropic-ai/claude-code
+> ```
+>
+> 系统会提示你输入电脑密码（输入时不会显示，这是正常的），输完按回车就行。
+
 **Step 3：验证安装**
 
 ```bash
@@ -181,6 +198,12 @@ claude --version
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
+
+> ⚠️ 如果看到权限错误，加 `sudo`：
+>
+> ```bash
+> sudo npm install -g @anthropic-ai/claude-code
+> ```
 
 **Step 3：验证安装**
 
@@ -247,39 +270,151 @@ Please log in to continue...
 
 ## ⚠️ 安装遇到问题？
 
-### 问题 1："'npm' 不是内部或外部命令"
+### Windows 问题
+
+<details>
+<summary>❓ PowerShell 提示"禁止运行脚本"</summary>
+
+**错误信息**：
+```
+无法加载文件 xxx.ps1，因为在此系统上禁止运行脚本。
+```
+
+**原因**：Windows PowerShell 为了安全，默认不允许运行来自网络的脚本。
+
+**解决方法（二选一）**：
+
+**方法一（推荐⭐）：改用 CMD**
+1. 按 `Win + R`，输入 `cmd`，回车
+2. 在 CMD 中重新运行安装命令
+3. CMD 不会有执行策略的问题！
+
+**方法二：修改 PowerShell 执行策略**
+1. 右键开始菜单 → **「Windows PowerShell（管理员）」** 或 **「终端（管理员）」**
+2. 输入以下命令：
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+   ```
+3. 输入 `Y` 确认
+4. 关闭管理员窗口，重新打开普通 PowerShell
+5. 再次运行安装命令
+
+![Windows PowerShell 执行策略错误截图]（待补充）
+
+</details>
+
+<details>
+<summary>❓ CMD 提示 "没有权限"</summary>
+
+**解决方法**：右键开始菜单 → 选择 **「命令提示符（管理员）」** 或 **「终端（管理员）」**，在管理员窗口中重新运行安装命令。
+
+</details>
+
+---
+
+### macOS 问题
+
+<details>
+<summary>❓ 提示 "EACCES: permission denied"</summary>
+
+**错误信息**：
+```
+EACCES: permission denied, access '/usr/local/lib/node_modules'
+```
+
+**原因**：macOS 系统保护 `/usr/local` 目录，普通用户不能直接写入。
+
+**解决方法（二选一）**：
+
+**方法一（推荐⭐）：使用 sudo**
+```bash
+sudo npm install -g @anthropic-ai/claude-code
+```
+系统会提示输入你的电脑密码（**输入时不会显示任何字符，这是正常的！**），输完按回车就行。
+
+**方法二：修复 npm 权限（一劳永逸）**
+
+如果不想每次都输入 `sudo`，可以修改 npm 的全局安装目录到你的用户目录：
+
+```bash
+# 1. 创建用户级的全局安装目录
+mkdir ~/.npm-global
+
+# 2. 配置 npm 使用新目录
+npm config set prefix '~/.npm-global'
+
+# 3. 把新目录加入 PATH（添加到 ~/.zshrc 或 ~/.bash_profile）
+echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.zshrc
+source ~/.zshrc
+
+# 4. 现在可以不用 sudo 了！
+npm install -g @anthropic-ai/claude-code
+```
+
+> 💡 方法二操作稍多，但以后装其他包也不需要 sudo。建议有时间的时候做。
+
+![macOS EACCES 权限错误截图]（待补充）
+
+</details>
+
+---
+
+### Linux 问题
+
+<details>
+<summary>❓ 提示权限不足</summary>
+
+**解决方法**：
+```bash
+sudo npm install -g @anthropic-ai/claude-code
+```
+输入你的用户密码（不会显示），按回车即可。
+
+</details>
+
+---
+
+### 通用问题
+
+<details>
+<summary>❓ "npm 不是内部或外部命令"</summary>
 
 **原因**：Node.js 没有安装成功。
 
 **解决**：
 1. 重新下载 Node.js：https://nodejs.org/
-2. 安装时确保勾选了"Add to PATH"
-3. 安装完 **重新打开** 终端
+2. 安装时确保勾选了 **"Add to PATH"**（一般默认勾选）
+3. 安装完 **重新打开** 终端再试
 
-### 问题 2：安装很慢或报错
+</details>
 
-**原因**：可能是网络问题。
+<details>
+<summary>❓ 安装很慢或报网络错误</summary>
 
-**解决**：试试使用国内镜像源：
+**原因**：国内访问 npm 官方源可能比较慢。
 
+**解决**：使用国内镜像源：
 ```bash
 npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com
 ```
 
-### 问题 3："'claude' 不是内部或外部命令"
+</details>
+
+<details>
+<summary>❓ "claude 不是内部或外部命令"</summary>
 
 **原因**：npm 全局安装路径没有加入 PATH。
 
 **解决**：
-1. 关闭终端，重新打开
+1. **关闭终端，重新打开** 再试（很多时候这就解决了！）
 2. 如果还不行，重启电脑
-3. 还不行的话，检查 npm 全局路径：
+3. 检查 npm 全局路径：
+   ```bash
+   npm config get prefix
+   ```
+4. 把输出的路径加到系统的 PATH 环境变量中
 
-```bash
-npm config get prefix
-```
-
-把这个路径加到系统的 PATH 环境变量中。
+</details>
 
 ---
 
