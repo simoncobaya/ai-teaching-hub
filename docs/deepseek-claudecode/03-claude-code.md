@@ -128,16 +128,11 @@ Boris Cherny 公开说过：**Claude Code 自身的代码，100% 是由 Claude C
 
 #### Windows 系统
 
-**Step 1：打开终端（重要！）**
+**Step 1：打开终端**
 
-> ⚠️ **先用 CMD（命令提示符），不要用 PowerShell！**
->
-> PowerShell 可能会报 "禁止运行脚本" 的错误，需要额外配置。
-> 用 CMD 最简单，不会遇到权限问题。
+按 `Win + R`，输入 `cmd`，按回车。或者右键开始菜单，选择「终端」或「PowerShell」。
 
-按 `Win + R`，输入 `cmd`，按回车。
-
-![Windows 运行 CMD 截图]
+> ⚠️ 如果使用 PowerShell 时提示 **"禁止运行脚本"**，请看下方的问题排查章节解决，很简单的！
 
 **Step 2：安装 Claude Code**
 
@@ -146,8 +141,6 @@ npm install -g @anthropic-ai/claude-code
 ```
 
 > 💡 `npm` 是 Node.js 的包管理器，就像应用商店一样。这个命令是从"应用商店"下载安装 Claude Code。
->
-> ⚠️ 如果你不小心用了 PowerShell 并且看到 **"禁止运行脚本"** 的错误，不用慌！关掉 PowerShell，用 CMD 重新安装就行。如果坚持要用 PowerShell，请看下方的问题排查章节。
 
 **Step 3：验证安装**
 
@@ -282,22 +275,22 @@ Please log in to continue...
 
 **原因**：Windows PowerShell 为了安全，默认不允许运行来自网络的脚本。
 
-**解决方法（二选一）**：
+**解决方法**：
 
-**方法一（推荐⭐）：改用 CMD**
-1. 按 `Win + R`，输入 `cmd`，回车
-2. 在 CMD 中重新运行安装命令
-3. CMD 不会有执行策略的问题！
-
-**方法二：修改 PowerShell 执行策略**
-1. 右键开始菜单 → **「Windows PowerShell（管理员）」** 或 **「终端（管理员）」**
-2. 输入以下命令：
+1. 右键开始菜单 → 选择 **「Windows PowerShell（管理员）」** 或 **「终端（管理员）」**
+2. 输入以下命令，然后按回车：
    ```powershell
    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
    ```
 3. 输入 `Y` 确认
-4. 关闭管理员窗口，重新打开普通 PowerShell
-5. 再次运行安装命令
+4. 关闭管理员窗口，重新打开普通 PowerShell 或终端
+5. 再次运行安装命令：
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+> 💡 执行策略只需要改一次，以后都不会再出现这个错误了！
 
 ![Windows PowerShell 执行策略错误截图]（待补充）
 
