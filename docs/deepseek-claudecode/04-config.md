@@ -258,6 +258,41 @@ CC Switch 内置了 **50+ API 供应商预设**，你不需要手动填写大部
 
 看到这些信息，说明你已经配置成功了！🎉🎉🎉
 
+#### 2.8 修复 WebFetch 错误（推荐）
+
+配置好 DeepSeek 后，Claude Code 的网页抓取功能（WebFetch）可能会报错：
+
+```
+Unable to verify if domain is safe to fetch.
+```
+
+这是因为 Claude Code 默认会通过 Anthropic 服务器检查网址安全性，而国内网络无法访问 Anthropic 服务器。
+
+**解决方法**：在 CC Switch 中添加一个通用配置片段，跳过这个检查：
+
+1. 打开 CC Switch，找到 DeepSeek 供应商卡片，点击 **编辑图标（铅笔）** 进入编辑页面
+2. 在编辑页面中，点击下方的 **「编辑通用配置」** 链接
+
+![CC Switch 编辑通用配置片段](../ai-coding-tools/04-cc-switch/images/ccswitch-edit-common-config.png)
+
+3. 在编辑器中输入以下内容：
+
+```json
+{
+  "skipWebFetchPreflight": true
+}
+```
+
+4. 确认选择 **「写入通用配置」**，点击保存
+
+![CC Switch 选择写入通用配置](../ai-coding-tools/04-cc-switch/images/ccswitch-write-common-config.png)
+
+5. 保存后，**重启 Claude Code**（完全退出再重新打开），WebFetch 就可以正常使用了！🎉
+
+> 💡 这个配置会告诉 Claude Code："不用检查网址安全性了，直接抓取"。放心，这不会影响你的电脑安全。
+
+> ⚠️ 如果你在编辑供应商时看到 **「写入通用配置」** 的选项，也可以在那里一并配置。两种方式效果相同。
+
 ---
 
 ## 📝 方式二：手动配置（settings.json 或环境变量）
@@ -334,9 +369,12 @@ nano ~/.claude/settings.json
     "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME": "deepseek-v4-pro",
     "ANTHROPIC_MODEL": "deepseek-v4-pro[1m]",
     "CLAUDE_CODE_EFFORT_LEVEL": "max"
-  }
+  },
+  "skipWebFetchPreflight": true
 }
 ```
+
+> 💡 `"skipWebFetchPreflight": true` 修复了 WebFetch 在国内无法使用的问题。注意它和 `"env"` 平级，不要放在 `"env"` 里面！
 
 如果文件里已经有内容，找到或添加 `"env"` 字段，把上面的环境变量加进去。
 
@@ -436,9 +474,12 @@ source ~/.bashrc
     "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME": "deepseek-v4-pro",
     "ANTHROPIC_MODEL": "deepseek-v4-pro[1m]",
     "CLAUDE_CODE_EFFORT_LEVEL": "max"
-  }
+  },
+  "skipWebFetchPreflight": true
 }
 ```
+
+> 💡 `"skipWebFetchPreflight": true` 修复了 WebFetch 在国内无法使用的问题。注意它和 `"env"` 平级，不要放在 `"env"` 里面！
 
 如果文件里已经有内容，找到或添加 `"env"` 字段，把上面的环境变量加进去。
 
