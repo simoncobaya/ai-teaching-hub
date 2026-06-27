@@ -20,8 +20,8 @@
 | [第二步](./02-nodejs.md) | 🟢 安装 Node.js | 准备好运行环境 |
 | [第三步](./03-claude-code.md) | 🤖 安装 Claude Code | AI 编程助手安装好了 |
 | [第四步](./04-config.md) | ⚙️ 配置 DeepSeek | 让 Claude Code 用 DeepSeek，不需要 Claude 账号！ |
-| [第五步](./05-basics.md) | 💬 学会基本用法 | 能和 AI 对话编程了 |
-| [第六步](./06-verify.md) | ✅ 第一个项目 | 让 AI 帮你写游戏！🎮 |
+| [第五步](./05-basics.md) | 🚀 快速上手 + 核心技能 | 验证配置、第一个项目、30+ 命令、定制 AI |
+| [第六步](./06-verify.md) | 🧩 进阶探索 | Plugin 市场、更多项目、学习路线图 |
 
 **预计时间**：1-2 小时（可以分几天完成）
 
