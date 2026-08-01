@@ -6,7 +6,9 @@
   - [第四步：配置 DeepSeek](/deepseek-claudecode/04-config.md)
   - [第五步：基本用法](/deepseek-claudecode/05-basics.md)
   - [第六步：第一个项目](/deepseek-claudecode/06-verify.md)
-  - [常见问题](/deepseek-claudecode/07-troubleshooting.md)
+  - [第七步：打地鼠 — 从零到能玩](/deepseek-claudecode/07-whack-a-mole.md)
+  - [第八步：打地鼠 — 从能玩到好玩](/deepseek-claudecode/08-game-feel.md)
+  - [常见问题](/deepseek-claudecode/09-troubleshooting.md)
 
 - **📚 AI 编程工具全家桶（完整版）**
   - [教程首页](/ai-coding-tools/README.md)

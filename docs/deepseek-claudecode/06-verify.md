@@ -414,7 +414,7 @@ AI：生成 .xlsx 文件 → 你可以用 Excel 打开继续编辑！
 
 | 想做什么 | 去哪学 |
 |---------|--------|
-| 🔧 解决遇到的问题 | [常见问题](./07-troubleshooting.md) |
+| 🔧 解决遇到的问题 | [常见问题](./09-troubleshooting.md) |
 | 🎨 深入学习 frontend-design | [frontend-design 详解](../claudecode/skills/frontend-design.md) |
 | 🦸 深入学习 superpowers | [superpowers 详解](../claudecode/skills/superpowers.md) |
 | 🎮 深入学习 playground | [playground 详解](../claudecode/skills/playground.md) |
@@ -453,4 +453,4 @@ AI：生成 .xlsx 文件 → 你可以用 Excel 打开继续编辑！
 
 ---
 
-[⬅️ 上一页：基本用法](./05-basics.md) | [➡️ 下一页：常见问题](./07-troubleshooting.md)
+[⬅️ 上一页：基本用法](./05-basics.md) | [➡️ 下一页：疯狂打地鼠（上） 🔨](./07-whack-a-mole.md)

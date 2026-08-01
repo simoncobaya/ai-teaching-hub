@@ -100,7 +100,7 @@ Quick safety check: Is this a project you created or one you trust?
 ```
 
 - ✅ DeepSeek 回复了 → **配置成功！** 🎉
-- ❌ 报错了 → [常见问题解决](./07-troubleshooting.md)
+- ❌ 报错了 → [常见问题解决](./09-troubleshooting.md)
 
 **测试编程能力：**
 
