@@ -1,3 +1,13 @@
+- **🤖 CodeBuddy（腾讯云代码助手）**
+  - [产品介绍](/codebuddy/README.md)
+  - [安装指南](/codebuddy/install.md)
+  - [国内版 vs 国际版](/codebuddy/versions.md)
+
+- **💼 WorkBuddy（腾讯 AI 办公助手）**
+  - [产品介绍](/workbuddy/README.md)
+  - [安装指南](/workbuddy/install.md)
+  - [国内版 vs 国际版](/workbuddy/versions.md)
+
 - **🚀 DeepSeek + Claude Code 快速入门**
   - [开始学习](/deepseek-claudecode/README.md)
   - [第一步：认识 DeepSeek](/deepseek-claudecode/01-deepseek.md)

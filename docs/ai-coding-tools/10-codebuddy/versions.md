@@ -1,75 +1,79 @@
-# 🌍 国内版 vs 国际版
+# CodeBuddy 国内版 vs 国际版
 
-> CodeBuddy CLI 是同一个工具，登录时选择国内账号或国际账号即可。
+> CodeBuddy 有两个独立的官网和账号体系，分别面向中国大陆和全球开发者。
 
 ---
 
-## 对比详情
+## 核心结论
 
-| 对比项 | 🇨🇳 国内版 | 🌍 国际版 |
-|--------|-----------|-----------|
+| 问题 | 答案 |
+|------|------|
+| 是同一个工具吗？ | **CLI 是同一工具**（登录时选站点）；**IDE 需从各自官网下载** |
+| 账号互通吗？ | **不互通**，各自独立的账号体系 |
+| CLI 如何区分版本？ | 安装后登录时选择站点（Chinese Site / International Site） |
+| IDE 如何区分版本？ | 从对应官网下载不同安装包 |
+
+---
+
+## 版本对比
+
+| 维度 | 国内版 | 国际版 |
+|------|--------|--------|
 | **官网** | https://www.codebuddy.cn/ | https://www.codebuddy.ai/ |
-| **CLI 入口** | https://www.codebuddy.cn/cli/ | https://www.codebuddy.ai/cli |
-| **服务区域** | 中国大陆 | 全球 |
-| **网络要求** | 国内直连 | 国际网络 |
-| **注册方式** | 手机号 | 邮箱 / Google |
-| **AI 模型** | 国内模型优先 | 国际模型优先 |
-| **中文支持** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| **响应速度** | 国内快 | 海外快 |
-| **数据存储** | 国内服务器 | 海外服务器 |
+| **文档** | https://www.codebuddy.cn/docs | https://www.codebuddy.ai/docs |
+| **CLI 登录地址** | copilot.tencent.com（微信扫码） | codebuddy.ai（Google / GitHub） |
+| **账号体系** | 微信等国内账号 | Google / GitHub 等国际账号 |
+| **IDE 下载** | https://www.codebuddy.cn/ide | https://www.codebuddy.ai/ide |
 
 ---
 
-## 重要说明
+## CLI：同一工具，登录时选择站点
 
-> 💡 **CodeBuddy CLI 是同一个工具**，无论你从国内入口还是国际入口安装，都是同一个 CLI。
->
-> 区别在于 **登录时选择哪个账号**：
-> - 用国内手机号注册的账号 → 使用国内版服务
-> - 用邮箱/Google 注册的账号 → 使用国际版服务
+CodeBuddy CLI（CodeBuddy Code）是**同一个 npm 包**，安装后在首次使用时选择登录站点：
+
+| 登录选项 | 对应地址 | 认证方式 |
+|---------|---------|---------|
+| **Chinese Site** | copilot.tencent.com | 微信扫码 |
+| **International Site** | codebuddy.ai | Google / GitHub |
+| **Enterprise Domain** | 企业专属域名 | 企业账号 |
+| **iOA** | 腾讯内部 | iOA 认证 |
+
+---
+
+## IDE：各自独立下载
+
+CodeBuddy IDE 需从对应官网下载安装包：
+
+- 🇨🇳 国内版 IDE：<https://www.codebuddy.cn/ide>
+- 🌍 国际版 IDE：<https://www.codebuddy.ai/ide>
+
+> 2025 年 8 月 21 日，CodeBuddy IDE **国内版**正式开放公测。
 
 ---
 
 ## 如何选择？
 
-### 🇨🇳 选国内版，如果：
-- 你在中国大陆使用
-- 你希望中文体验最好
-- 你的网络主要在国内
-- 你更习惯手机号注册
-
-### 🌍 选国际版，如果：
-- 你在海外使用
-- 你需要用到国际模型
-- 你有 Google 账号
-- 你需要海外服务
+| 你的情况 | 推荐版本 |
+|---------|---------|
+| 在中国大陆，使用国内云服务 | 🇨🇳 国内版 |
+| 面向海外市场，使用国际云服务 | 🌍 国际版 |
+| 团队在国内，需要合规和本地化支持 | 🇨🇳 国内版 |
+| 全球化团队，跨地区协作 | 🌍 国际版 |
 
 ---
 
-## 切换版本
+## 常见误区
 
-### IDE 版
+### ❌ 误区 1：IDE 是 VS Code 插件
 
-在 CodeBuddy 设置中切换：
-1. 打开 CodeBuddy 设置
-2. 找到 **「服务器区域」** 或 **「Region」**
-3. 选择 **「中国」** 或 **「国际」**
-4. 重新登录对应账号
+CodeBuddy IDE 是基于 Eclipse Theia 深度定制的**独立桌面编辑器**，类似于 Cursor。它与插件版本是完全不同的产品形态。插件版本安装到 VS Code / JetBrains / 微信开发者工具中作为扩展使用，而 IDE 版本是独立运行的应用程序。
 
-### CLI 版
+### ❌ 误区 2：`--region` 参数切换版本
 
-```bash
-# 切换到国内账号
-codebuddy login --region cn
+CodeBuddy CLI 不存在 `codebuddy login --region cn` 这样的命令。CLI 是同一工具，安装后在交互式登录流程中选择站点即可。
 
-# 切换到国际账号
-codebuddy login --region global
-```
+### ❌ 误区 3：所有形态都有独立的"国内版"和"国际版"
 
----
-
-## 📌 下一步
-
-👉 **[Qoder 教程](../11-qoder/README.md)** — 阿里巴巴的 AI 编程工具
-
-👉 **[工具对比](../99-comparison/README.md)**
+- **CLI**：同一 npm 包，登录时选站点
+- **IDE**：从各自官网下载不同安装包
+- **插件**：在 IDE 插件市场搜索安装，登录时区分账号
